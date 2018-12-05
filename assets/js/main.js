@@ -838,137 +838,112 @@ let crimeRates = [
     }
 ]
 
-// google.charts.load('current', {'packages':['bar']});
-// google.charts.setOnLoadCallback(drawChart);
-
-// function drawChart() {
-
-//     var data = google.visualization.arrayToDataTable([
-//         ['States', 'TotalCrimeRate', 'LiteracyRate'],
-//         ['2014', 1000, 400],
-//         ['2015', 1170, 460],
-//         ['2016', 660, 1120],
-//         ['2017', 1030, 540]
-//     ]);
-
-//     var options = {
-//         chart: {
-//             title: 'Comparison btw Literacy Rate vs Crime Rate.',
-//             subtitle: 'year 2011',
-//         }
-//     };
-//     var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-//     chart.draw(data, google.charts.Bar.convertOptions(options));
-// }
-
 let stateArray = [];
 let crimeCountValues = [];
 let literacyCountValues = [];
 let stateIndex = {};
 
 function barChart() {
-
-    for (let i = 0; i < crimeRates.length; i++) {
-        if (crimeRates[i]['State/UT'] != 'Total (All-India)') {
-            stateArray.push(crimeRates[i]['State/UT']);
-            crimeCountValues.push(crimeRates[i]['Total IPC Crimes']);
-            stateIndex[crimeRates[i]['State/UT']] = i;
-        }
+  for (let i = 0; i < crimeRates.length; i++) {
+    if (crimeRates[i]['State/UT'] != 'Total (All-India)') {
+        stateArray.push(crimeRates[i]['State/UT']);
+        crimeCountValues.push(crimeRates[i]['Total IPC Crimes']);
+        stateIndex[crimeRates[i]['State/UT']] = i;
     }
+  }
 
-    for (let i = 0; i < literacyRates.length; i++) {
-        literacyCountValues[stateIndex[literacyRates[i]['State/ UTs']]] = literacyRates[i]['2011'];
-    }
+  for (let i = 0; i < literacyRates.length; i++) {
+      literacyCountValues[stateIndex[literacyRates[i]['State/ UTs']]] = literacyRates[i]['2011'];
+  }
 
-    var options = {
-        chart: {
-            height: 350,
-            type: 'line',
-            stacked: false
-        },
-        dataLabels: {
-            enabled: false
-        },
-        series: [{
-            name: 'CrimeRate (counts)',
-            type: 'column',
-            data: crimeCountValues
-            // data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6]
-        },
-        {
-            name: 'Literacy Rate(%)',
-            type: 'column',
-            data: literacyCountValues
-        }],
-        stroke: {
-            width: [1, 1]
-        },
-        title: {
-            text: 'Comparison between Crime Rate vs Literacy Rate(2011)',
-            align: 'left',
-            offsetX: 110
-        },
-        xaxis: {
-            // states.
-            // categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016],
-            categories: stateArray,
-        },
-        yaxis: [
-            {
-                axisTicks: {
-                    show: true,
-                },
-                axisBorder: {
-                    show: true,
-                    color: '#008FFB'
-                },
-                labels: {
-                    style: {
-                        color: '#008FFB',
-                    }
-                },
-                title: {
-                    text: "Literacy Rate(%)",
-                },
-                tooltip: {
-                    enabled: true
-                }
-            },
+  var options = {
+      chart: {
+          height: 350,
+          type: 'line',
+          stacked: false
+      },
+      dataLabels: {
+          enabled: false
+      },
+      series: [{
+          name: 'CrimeRate (counts)',
+          type: 'column',
+          data: crimeCountValues
+          // data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6]
+      },
+      {
+          name: 'Literacy Rate(%)',
+          type: 'column',
+          data: literacyCountValues
+      }],
+      stroke: {
+          width: [1, 1]
+      },
+      title: {
+          text: 'Comparison between Crime Rate vs Literacy Rate(2011)',
+          align: 'left',
+          offsetX: 110
+      },
+      xaxis: {
+          // states.
+          // categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016],
+          categories: stateArray,
+      },
+      yaxis: [
+          {
+              axisTicks: {
+                  show: true,
+              },
+              axisBorder: {
+                  show: true,
+                  color: '#008FFB'
+              },
+              labels: {
+                  style: {
+                      color: '#008FFB',
+                  }
+              },
+              title: {
+                  text: "Literacy Rate(%)",
+              },
+              tooltip: {
+                  enabled: true
+              }
+          },
 
-            {
-                seriesName: 'Income',
-                opposite: true,
-                axisTicks: {
-                    show: true,
-                },
-                axisBorder: {
-                    show: true,
-                    color: '#00E396'
-                },
-                labels: {
-                    style: {
-                        color: '#00E396',
-                    }
-                },
-                title: {
-                    text: "Crime Rate (counts)",
-                },
-            },
-        ],
-        tooltip: {
-            fixed: {
-                enabled: true,
-                position: 'topLeft', // topRight, topLeft, bottomRight, bottomLeft
-                offsetY: 30,
-                offsetX: 60
-            },
-        },
-        legend: {
-            horizontalAlign: 'left',
-            offsetX: 40
-        }
-    }
+          {
+              seriesName: 'Income',
+              opposite: true,
+              axisTicks: {
+                  show: true,
+              },
+              axisBorder: {
+                  show: true,
+                  color: '#00E396'
+              },
+              labels: {
+                  style: {
+                      color: '#00E396',
+                  }
+              },
+              title: {
+                  text: "Crime Rate (counts)",
+              },
+          },
+      ],
+      tooltip: {
+          fixed: {
+              enabled: true,
+              position: 'topLeft', // topRight, topLeft, bottomRight, bottomLeft
+              offsetY: 30,
+              offsetX: 60
+          },
+      },
+      legend: {
+          horizontalAlign: 'left',
+          offsetX: 40
+      }
+  }
 
     var chart = new ApexCharts(
         document.querySelector("#columnchart_material"),
@@ -1150,9 +1125,6 @@ function lineGraph() {
       lineChart.render();
       
 }
-
-
-
 
 barChart();
 lineGraph();

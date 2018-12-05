@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Black+And+White+Picture|Noto+Sans+JP');
 h2{
-   
     text-align: center;
     font-weight: 300;
     margin: 0 auto;
@@ -41,35 +40,69 @@ header{
 }
 .selection{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 5px;
-    justify-items: center;
-    align-items: center;
+    grid-template-columns: 1fr 2.5fr 0.5fr;
+    grid-gap: 20px;
+    /*justify-items: center;*/
+    /*align-items: center;*/
 }
 .item{
     height: 30px;
     padding: 15px;
-    /* background-color: blueviolet; */
-    
 }
 
+.text-para{
+    justify-content: center;
+    align-items: center;
+    margin-top: 4em;
+    line-height: 20px;
+    /*text-align: center;*/
+}
 .Submit-btn{
     position: absolute;
-    top: 40%;
-    left: 40%;
+    top: 90%;
+    left: 5%;
     margin: 0 auto;
-    padding: 10px 50px;
+    padding: 8px 60px;
     background: rgb(13, 13, 13);
     border: none;
     color: white;
     font-weight: 300;
     border-radius: 4px;
     font-size: 20px;
+    outline: none;
+    cursor: pointer;
 }
 
 .footer-section{
     width: 100%;
     height: 50px;
     background: rgb(13, 13, 13);
+}
 
+.graph{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.category{
+    background: #af6b74;
+
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+.footer{
+    height: 100%;
+    width: 100%;
+    color: white;
+    text-align: center;
+    background: rgb(13, 13, 13);
+}
+
+h5{
+    padding: 20px;
 }
