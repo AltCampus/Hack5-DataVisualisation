@@ -869,18 +869,18 @@ let stateIndex = {};
 
 function barChart() {
 
-    for(let i=0; i<crimeRates.length; i++) {
+    for (let i = 0; i < crimeRates.length; i++) {
         if (crimeRates[i]['State/UT'] != 'Total (All-India)') {
             stateArray.push(crimeRates[i]['State/UT']);
             crimeCountValues.push(crimeRates[i]['Total IPC Crimes']);
             stateIndex[crimeRates[i]['State/UT']] = i;
         }
     }
-    
-    for(let i=0; i<literacyRates.length; i++) {
+
+    for (let i = 0; i < literacyRates.length; i++) {
         literacyCountValues[stateIndex[literacyRates[i]['State/ UTs']]] = literacyRates[i]['2011'];
     }
-    
+
     var options = {
         chart: {
             height: 350,
@@ -935,7 +935,7 @@ function barChart() {
                     enabled: true
                 }
             },
-    
+
             {
                 seriesName: 'Income',
                 opposite: true,
@@ -969,18 +969,193 @@ function barChart() {
             offsetX: 40
         }
     }
-    
+
     var chart = new ApexCharts(
         document.querySelector("#columnchart_material"),
         options
     );
-    
-    
+
+
     chart.render();
 }
 
-barChart();
+function lineGraph() {
+    // var options = {
+    //     chart: {
+    //         height: 350,
+    //         type: "line",
+    //         stacked: false
+    //     },
+    //     dataLabels: {
+    //         enabled: false
+    //     },
+    //     colors: ["#FF1654", "#247BA0"],
+    //     series: [
+    //         {
+    //             name: "Literacy Rate",
+    //             data: literacyCountValues
+    //         },
+    //         {
+    //             name: "Total IPC Crimes",
+    //             data: crimeCountValues
+    //         }
+    //     ],
+    //     stroke: {
+    //         width: [4, 4]
+    //     },
+    //     plotOptions: {
+    //         bar: {
+    //             columnWidth: "20%"
+    //         }
+    //     },
+    //     xaxis: {
+    //         categories: stateArray,
+    //     },
+    //     yaxis: [
+    //         {
+    //             axisTicks: {
+    //                 show: true
+    //             },
+    //             axisBorder: {
+    //                 show: true,
+    //                 color: "#FF1654"
+    //             },
+    //             labels: {
+    //                 style: {
+    //                     color: "#FF1654"
+    //                 }
+    //             },
+    //             title: {
+    //                 text: "Literacy Rate"
+    //             }
+    //         },
+    //         {
+    //             opposite: true,
+    //             axisTicks: {
+    //                 show: true
+    //             },
+    //             axisBorder: {
+    //                 show: true,
+    //                 color: "#247BA0"
+    //             },
+    //             labels: {
+    //                 style: {
+    //                     color: "#247BA0"
+    //                 }
+    //             },
+    //             title: {
+    //                 text: "Total IPC Crimes"
+    //             }
+    //         }
+    //     ],
+    //     tooltip: {
+    //         shared: false,
+    //         intersect: true,
+    //         x: {
+    //             show: false
+    //         }
+    //     },
+    //     legend: {
+    //         horizontalAlign: "left",
+    //         offsetX: 40
+    //     }
+    // };
 
+    // var lineChart = new ApexCharts(document.querySelector("#line-chart"), options);
+
+    // lineChart.render();
+    var options = {
+        chart: {
+          height: 350,
+          type: "line",
+          stacked: false
+        },
+        dataLabels: {
+          enabled: false
+        },
+        colors: ["#FF1654", "#247BA0"],
+        series: [
+          {
+            name: "Literacy Rate",
+            data: literacyCountValues
+          },
+          {
+            name: "Total IPC Crimes",
+            data: crimeCountValues
+          }
+        ],
+        stroke: {
+          width: [4, 4]
+        },
+        plotOptions: {
+          bar: {
+            columnWidth: "20%"
+          }
+        },
+        xaxis: {
+          categories: stateArray
+        },
+        yaxis: [
+          {
+            axisTicks: {
+              show: true
+            },
+            axisBorder: {
+              show: true,
+              color: "#FF1654"
+            },
+            labels: {
+              style: {
+                color: "#FF1654"
+              }
+            },
+            title: {
+              text: "Literacy Rate"
+            }
+          },
+          {
+            opposite: true,
+            axisTicks: {
+              show: true
+            },
+            axisBorder: {
+              show: true,
+              color: "#247BA0"
+            },
+            labels: {
+              style: {
+                color: "#247BA0"
+              }
+            },
+            title: {
+              text: "Crime Counts"
+            }
+          }
+        ],
+        tooltip: {
+          shared: false,
+          intersect: true,
+          x: {
+            show: false
+          }
+        },
+        legend: {
+          horizontalAlign: "left",
+          offsetX: 40
+        }
+      };
+      
+      var lineChart = new ApexCharts(document.querySelector("#line-chart"), options);
+      
+      lineChart.render();
+      
+}
+
+
+
+
+barChart();
+lineGraph();
 
 
 
