@@ -1,19 +1,7 @@
 h2{
 
 }
-select {
-    margin: 50px;
-    width: 170px;
-    padding: 5px 35px 5px 5px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    height: 34px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: url() 96% / 15% no-repeat #eee;
-    text-align: center;
-}
+
 
 header{
     font-family: sans-serif;
@@ -27,7 +15,7 @@ header{
 .selection{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 5px;
+    grid-gap: 1px;
     justify-items: center;
     align-items: center;
 }
@@ -36,4 +24,14 @@ header{
     padding: 15px;
     /* background-color: blueviolet; */
     
+}
+select {
+    /* margin: 50px; */
+    width: 180px;
+    padding: 5px 35px 5px 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    /* height: 34px; */
+    appearance: none;
+    /* background: url() 96% / 15% no-repeat #eee; */
 }
